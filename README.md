@@ -13,9 +13,12 @@ The LightWAVE sources are available within the LightWAVE project on PhysioNetWor
 1.   If you have not already done so, go to https://physionet.org/users/ and create a personal PhysioNetWorks account. It's free and the process takes only a minute or two.
 2.  Log in to your PhysioNetWorks account and look for the link to LightWAVE in the Projects section on your home page. Follow the link and look for the signup message ("Interested PhysioNetWorks members may obtain access to this project now by clicking here."). Click on the word "here" in the message to join the project.
 3.   From the project's archives ( https://physionet.org/works/LightWAVE/files), find and download the most recent set of sources. Each version is available as a tarball (e.g., lightwave-0.43.tar.gz) that can be downloaded as a single file and unpacked, or you can download individual files from the most recent version from the lightwave subdirectory. For downloading hints, see How can I download binary files?; for instructions on unpacking tarballs, see How can I unpack a .tar.gz archive (a "tarball")?. If you choose to download individual files, note that you will need to create a complete copy of the lightwave directory tree in order to test your installation with the LightWAVE client.
+
 ### Edit the Makefile
+
 In the lightwave directory, open Makefile in a text editor (not a word processor) and read it. The comments near the top of the file describe other free software components you may need to install before compiling and installing the LightWAVE server.
 Currently, these components include:
+
 * a properly configured web server, such as Apache
 * libcgi
 * libwfdb
@@ -24,12 +27,15 @@ Currently, these components include:
 * perl and CGI.pm (for lw-scribe only)
 (This list may be incomplete; consult the Makefile for any additions.)
 As the comments near the top of the file note, you may need to change the values of some parameters that are defined in Makefile to match your installation.
+
 ### Build and install the LightWAVE server
 Once you have checked the Makefile and made any necessary changes to it, open a terminal window, go to the directory that contains Makefile, and run the command
+
 ```
     make
 ```
 The output of this command should look something like this:
+
 ```
     gcc -g -DLWDIR=\"/home/physionet/html/lightwave\" -DLWVER=\"0.43\" -DLW_WFDB=\""/usr/local/database http://physionet.org/physiobank/database"\" server/lightwave.c -o lightwave -lcgi -lwfdb
     mkdir -p /home/physionet/cgi-bin
@@ -48,6 +54,7 @@ LightWAVE has been installed.  If an HTTP server is running,use LightWAVE by ope
 or 127.0.0.1 to run without a network connection).
 ### Test the installed server
 From the lightwave directory, run this command:
+
 ```
     make test
 ```
