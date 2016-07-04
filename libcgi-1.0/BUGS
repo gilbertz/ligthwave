@@ -1,0 +1,4 @@
+* There is a problem with str_base64_decode function ( base64.c ). 
+	Sometimes the string returned is missing the last character, 
+	sometimes not. I mean, not the encoded string, but the decoded
+	string.

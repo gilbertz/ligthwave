@@ -1,0 +1,17 @@
+Open Source, Open Mind
+--
+
+** I AM STILL LEARNING ENGLISH ( yes, still... ) **
+
+1) There is a makefile ( Makefile ). Use it to compile the library and examples
+2) To compile the library, just type "make" (whithout the quotes) in the 
+directory that you have decompressed the library
+3) To clean, type make clean
+4) To remove library files, type make uninstall
+5) Into examples/ directory are some examples. 
+6) Well.. the basic idea is it. If you have any kind of problem
+or questions/sugestions, please send me an email 
+( rafael@insanecorp.com ). Your help is very welcome!
+
+---
+Metal will never die. Heavy fun

@@ -67,12 +67,13 @@ LWVERSION = 0.64
 
 # LW_WFDB is the LightWAVE server's WFDB path, a space-separated list of
 # locations (data repositories) where the server will look for requested data.
-LW_WFDB = "/usr/local/database http://physionet.org/physiobank/database"
-
+#LW_WFDB = "/usr/local/database http://physionet.org/physiobank/database"
+#LW_WFDB = "http://physionet.org/physiobank/database"
+LW_WFDB = "/usr/local/database"
 # DocumentRoot is the web server's top-level directory of (HTML) content.
 # The values below and in your Apache configuration file should match.
 # Note that it does not end with '/'.
-DocumentRoot = /home/physionet/html
+DocumentRoot = /home/zgq/lightwave
 
 # ServerName is the hostname of the web server, as specified in your Apache
 # configuration file.  The default setting below attempts to guess your server's
@@ -80,7 +81,7 @@ DocumentRoot = /home/physionet/html
 # multiple hostnames, however.  If the output of 'hostname' does not match the
 # value of ServerName in your Apache configuration file, change the value below
 # to match the Apache configuration file.
-ServerName = `hostname`
+ServerName = localhost
 
 # ScriptAlias1 is the prefix of URLs for server scripts (CGI applications).
 # It should match the first argument of the ScriptAlias directive in your
@@ -90,11 +91,11 @@ ScriptAlias1 = /cgi-bin/
 # ScriptAlias2 is the directory in which server scripts are to be installed.
 # It should match the second argument of the ScriptAlias directive in your
 # Apache configuration file.
-CGIDIR = /home/physionet/cgi-bin/
+CGIDIR = /home/zgq/cgi-bin/
 
 # User is the user who "owns" processes started by the web server.
 # It should match the value of User in your Apache configuration file.
-User = apache
+User = zgq
 
 # LWCLIENTDIR is the directory for the installed LightWAVE client.
 LWCLIENTDIR = $(DocumentRoot)/lightwave
@@ -143,7 +144,7 @@ client:	  clean FORCE
 	cp -pr client/* $(LWCLIENTDIR)
 	rm -f $(LWCLIENTDIR)/lightwave.html
 	baseurl=`echo "$(LWSERVERURL)" | cut -d/ -f1-3`; \
-	serverpath=`echo "$(LWSERVERURL)" | cut -d/ -f4-`; \
+	serverpath=`echo "$(LWSERVERURL).cgi" | cut -d/ -f4-`; \
 	scribepath=`echo "$(LWSCRIBEURL)" | cut -d/ -f4-`; \
 	sed "s+'https://physionet.org'+'$$baseurl'+" \
 	 <client/js/lightwave.js | \
@@ -156,7 +157,7 @@ client:	  clean FORCE
 # Install the LightWAVE server.
 server:	lightwave
 	mkdir -p $(CGIDIR)
-	cp -p lightwave $(CGIDIR)
+	cp -p lightwave.cgi $(CGIDIR)
 
 
 # Install the LightWAVE scribe.
@@ -176,7 +177,7 @@ scribedir:
 
 # Compile the lightwave server.
 lightwave:	server/lightwave.c
-	$(CC) $(CFLAGS) server/lightwave.c -o lightwave $(LDFLAGS)
+	$(CC) $(CFLAGS) server/lightwave.c -o lightwave.cgi $(LDFLAGS)
 
 # Compile and install patchann.
 patchann:	server/patchann.c
@@ -188,6 +189,6 @@ tarball: 	 clean
 
 # 'make clean': Remove unneeded files from package.
 clean:
-	rm -f lightwave patchann *~ */*~ */*/*~
+	rm -f lightwave.cgi patchann *~ */*~ */*/*~
 
 FORCE:

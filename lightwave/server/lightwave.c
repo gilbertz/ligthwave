@@ -40,8 +40,8 @@ _______________________________________________________________________________
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <libcgi/cgi.h>
-#include <wfdb/wfdblib.h>
+#include </usr/local/include/libcgi/cgi.h>
+#include </usr/local/include/wfdb/wfdblib.h>
 #include "setrepos.c"
 
 #ifndef LWDIR

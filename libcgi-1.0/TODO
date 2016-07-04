@@ -1,0 +1,17 @@
+------------------------
+In order of priority:
+------------------------
+- Template Engine
+- mime functions
+- Encrypted session
+- Memory Management functions
+- Code speed ups
+- Other miscelaneous functions
+- Win32 port? ( who wants it? )
+
+- Sugesstions??? please send to rafael@isnanecorp.com or 
+subscribe to the mailing list at http://lists.sourceforge.net/lists/listinfo/libcgi-general
+
+(ps: file-upload is alrealy implemented in the devel version. Next release it will be available)
+
+Thanks a lot
