@@ -82,13 +82,15 @@ Custom data repositories
 ```
     /usr/local/database
 ```
+
 If you wish to use a repository other than PhysioBank:
-1.	Choose a location for your repository.
+
+1.      Choose a location for your repository.
     * If the repository will be in local storage, the simplest choice is to put it in /usr/local/database (or the first component of your WFDB path, whatever that is).
     * Otherwise, add the location of the repository (which can be either a location in your local file system, or a URL) to the definition of LW_WFDB in Makefile, and recompile and install the server (run "make" as above). Be sure that your repository precedes PhysioBank in the WFDB path, or it will not be searched.
-2.	Make a copy of http://physionet.org/physiobank/database/DBS. Use a text editor (not a word processor) to edit it so that it includes the names of the database(s) in your repository, and put the modified DBS in the top-level directory of your repository. Important: database names may not include spaces!
-3.	Make a copy of http://physionet.org/physiobank/database/wfdbcal. If your records include signal types that are not listed in it, use a text editor to add them. Put the modified wfdbcal in the top-level directory of your repository.
-4.	For each database in your repository, make a subdirectory of your repository's top-level directory, with the name that you entered in DBS. Within the subdirectory:
+2.      Make a copy of http://physionet.org/physiobank/database/DBS. Use a text editor (not a word processor) to edit it so that it includes the names of the database(s) in your repository, and put the modified DBS in the top-level directory of your repository. Important: database names may not include spaces!
+3.      Make a copy of http://physionet.org/physiobank/database/wfdbcal. If your records include signal types that are not listed in it, use a text editor to add them. Put the modified wfdbcal in the top-level directory of your repository.
+4.      For each database in your repository, make a subdirectory of your repository's top-level directory, with the name that you entered in DBS. Within the subdirectory:
 o	Store the PhysioBank-compatible records for your database.
 o	Create plain text files named RECORDS (containing a list of record names) and ANNOTATORS (containing a list of annotator names), using those in the PhysioBank databases as models.
 * Note that, on specific request, the LightWAVE server will read sets of annotations that are not listed in the ANNOTATORS file. The current LightWAVE client does not provide a user interface for specifying an unlisted annnotation set, however; as a result, annotation sets are not readily accessible unless their annotator names are listed in ANNOTATORS. It is harmless (though slightly inefficient) to list annotator names for non-existent annotation sets in ANNOTATORS. Make an empty ANNOTATORS file if your database is unannotated.
